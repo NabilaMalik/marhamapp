@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:marham/Screens/deseases.dart';
 import 'package:marham/Screens/doctor.dart';
 import 'package:marham/Screens/horizontal_boxes_screen.dart';
+import 'package:marham/Screens/symptoms.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -58,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView( // ✅ Make page scrollable
         child: Container(
           width: double.infinity,
-          height: MediaQuery.of(context).size.height, // ✅ Ensure content fits
+          height: 1500, // ✅ Ensure content fits
           color: Colors.white,
           child: Padding(
             padding: EdgeInsets.only(top: 20, left: 20, right: 20),
@@ -182,6 +184,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 270,
                   width: double.infinity,
                   child: HorizontalVerticalBoxesScreen(),
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  height: 150,
+                  width: double.infinity,
+                  child: SymptomsScreen(),
+                ),
+                SizedBox(
+                  height: 150,
+                  width: double.infinity,
+                  child: DeseasesScreen(),
                 ),
                 SizedBox(height: 0,)
               ],
