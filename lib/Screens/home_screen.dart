@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(width: 8),
             Text(
-              "Marham",
+              "MetaXperts",
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -55,130 +55,141 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.white,
-        child: Padding(
-          padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Left Side: User Image & "Log In" Text
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 17,
-                        backgroundImage: AssetImage('assets/images/user.png'),
-                      ),
-                      SizedBox(width: 10),
-                      Text(
-                        "Log In",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  // Right Side: Location Icon & Dropdown
-                  Row(
-                    children: [
-                      Icon(Icons.location_on, color: Colors.teal),
-                      SizedBox(width: 8),
-                      DropdownButton<String>(
-                        value: selectedCity,
-                        icon: Icon(Icons.arrow_drop_down, color: Colors.black),
-                        style: TextStyle(color: Colors.black, fontSize: 14),
-                        underline: SizedBox(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedCity = newValue!;
-                          });
-                        },
-                        items: ["Select City", "Sialkot", "Lahore", "Karachi", "Multan"]
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+      body: SingleChildScrollView( // ✅ Make page scrollable
+        child: Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height, // ✅ Ensure content fits
+          color: Colors.white,
+          child: Padding(
+            padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Left Side: User Image & "Log In" Text
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundImage: AssetImage('assets/images/user.png'),
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          "Log In",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
 
-              SizedBox(height: 20),
+                    // Right Side: Location Icon & Dropdown
+                    Row(
+                      children: [
+                        Icon(Icons.location_on, color: Colors.teal),
+                        SizedBox(width: 8),
+                        DropdownButton<String>(
+                          value: selectedCity,
+                          icon: Icon(Icons.arrow_drop_down, color: Colors.black),
+                          style: TextStyle(color: Colors.black, fontSize: 14),
+                          underline: SizedBox(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              selectedCity = newValue!;
+                            });
+                          },
+                          items: ["Select City", "Sialkot", "Lahore", "Karachi", "Multan"]
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
 
-              // Search Bar
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(6),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.4),
-                        spreadRadius: 1,
-                        blurRadius: 6,
-                        offset: Offset(0, 3),
+                SizedBox(height: 20),
+
+                // Search Bar
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(6),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.4),
+                          spreadRadius: 1,
+                          blurRadius: 6,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "     Search by Doctor",
+                        suffixIcon: Icon(Icons.search, color: Colors.grey),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(6),
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                       ),
-                    ],
+                    ),
                   ),
+                ),
+
+                SizedBox(height: 30),
+
+                // Appointments Field
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: "     Search by Doctor",
-                      suffixIcon: Icon(Icons.search, color: Colors.grey),
+                      labelText: "My Appointments",
+                      labelStyle: TextStyle(color: Colors.teal.shade900),
+                      prefixIcon: Icon(Icons.calendar_month_sharp, color: Colors.teal),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(6),
-                        borderSide: BorderSide.none,
+                        borderSide: BorderSide(color: Colors.cyan.shade100),
                       ),
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: Colors.cyan.shade100,
                       contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                     ),
                   ),
                 ),
-              ),
 
-              SizedBox(height: 30),
+                SizedBox(height: 20),
 
-              // Appointments Field
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: "My Appointments",
-                    labelStyle: TextStyle(color: Colors.teal.shade900),
-                    prefixIcon: Icon(Icons.calendar_month_sharp, color: Colors.teal),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(6),
-                      borderSide: BorderSide(color: Colors.cyan.shade100),
-                    ),
-                    filled: true,
-                    fillColor: Colors.cyan.shade100,
-                    contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                  ),
+                // Doctor Section
+                SizedBox(
+                  height: 342,
+                  width: double.infinity,
+                  child: DoctorScreen(),
                 ),
-              ),
 
-            //  SizedBox(height: 20),
-SizedBox(height: 342,
-    width: double.infinity,
+                SizedBox(height: 20),
 
-    child: DoctorScreen(),),
-
-              SizedBox(height: 160,
-    width: double.infinity,
-
-    child: HorizontalVerticalBoxesScreen(),),
-
-            ],
+                // Horizontal and Vertical Boxes
+                SizedBox(
+                  height: 270,
+                  width: double.infinity,
+                  child: HorizontalVerticalBoxesScreen(),
+                ),
+                SizedBox(height: 0,)
+              ],
+            ),
           ),
         ),
       ),
+
     );
   }
 }
