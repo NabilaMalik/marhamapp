@@ -83,8 +83,6 @@ class HorizontalVerticalBoxesScreen extends StatelessWidget {
           ],
 
         ),
-
-
       ),
     );
   }

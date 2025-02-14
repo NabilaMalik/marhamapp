@@ -81,7 +81,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-
                   // Right Side: Location Icon & Dropdown
                   Row(
                     children: [
