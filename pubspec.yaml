@@ -30,11 +30,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  video_player: ^2.9.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-
+  sqflite: ^2.4.1
+  get: ^4.7.2
+  path_provider: ^2.1.5
+#
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -75,6 +79,16 @@ flutter:
      - assets/images/cough.png
      - assets/images/unnamed.jpg
      - assets/images/stomach.avif
+     - assets/images/healthylifestyle.jpg
+     - assets/images/womanhealth.jpg
+     - assets/images/Skin-Care.jpg
+     - assets/video/WhatsApp Video .mp4
+     - assets/video/Screen_recording.mp4
+     - assets/images/fb.png
+     - assets/images/youtube.png
+     - assets/images/insta.jpg
+     - assets/images/TIKTOK.jpg
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

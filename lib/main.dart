@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marham/Screens/home_screen.dart';
 import 'package:marham/Screens/splash_screen.dart';
 
 void main() {
