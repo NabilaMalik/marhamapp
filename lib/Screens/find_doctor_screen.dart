@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marham/Screens/HomeScreen/diseases.dart';
+import 'package:marham/Screens/HomeScreen/diseases_screen.dart';
 import 'package:marham/Screens/HomeScreen/doctors_scroll.dart';
 import 'package:marham/Screens/HomeScreen/symptoms.dart';
 import 'package:marham/Screens/Specialities_screen.dart';

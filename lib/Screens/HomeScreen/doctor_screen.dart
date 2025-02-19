@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marham/Screens/find_doctor.dart';
+import 'package:marham/Screens/find_doctor_screen.dart';
 
 class DoctorScreen extends StatelessWidget {
   const DoctorScreen({super.key});

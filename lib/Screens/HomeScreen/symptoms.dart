@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marham/Screens/HomeScreen/choose_speciality_screen.dart';
 
 class SymptomsScreen extends StatelessWidget {
   final String title;
@@ -69,7 +70,7 @@ class SymptomsScreen extends StatelessWidget {
                   }).toList(),
 
                   // View More Box (Fixed)
-                  if (showViewMore) _buildViewMoreBox(),
+                  if (showViewMore) _buildViewMoreBox(context),
                 ],
               ),
             ),
@@ -137,39 +138,49 @@ class SymptomsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildViewMoreBox() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 7),
-      width: 110,
-      height: 105,
-      decoration: BoxDecoration(
-        color: Colors.teal.shade900, // Grey background for distinction
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 5,
-            spreadRadius: 2,
-            offset: const Offset(2, 3),
-          ),
-        ],
-      ),
-      child: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.double_arrow, size: 20, color: Colors.white),
-            Text(
-              "View More",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
+  Widget _buildViewMoreBox(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ChooseSpecialityScreen()), // Replace with your new page
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 7),
+        width: 110,
+        height: 105,
+        decoration: BoxDecoration(
+          color: Colors.teal.shade900, // Background color
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 5,
+              spreadRadius: 2,
+              offset: const Offset(2, 3),
             ),
           ],
+        ),
+        child: const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.double_arrow, size: 20, color: Colors.white),
+              SizedBox(height: 5),
+              Text(
+                "View More",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+
 }
