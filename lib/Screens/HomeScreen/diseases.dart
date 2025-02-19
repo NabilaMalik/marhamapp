@@ -1,74 +1,76 @@
 import 'package:flutter/material.dart';
 
-class SymptomsScreen extends StatelessWidget {
+class DiseasesScreen extends StatelessWidget {
   final String title;
   final String viewAllText;
   final IconData? viewAllIcon;
   final Color bgColor;
   final bool showViewMore; // Flag to control "View More" visibility
 
-  final List<Map<String, dynamic>> symptoms = [
-    {"image": "assets/images/fever.png", "text": "Fever"},
-    {"image": "assets/images/cough.png", "text": "Cough"},
-    {"image": "assets/images/fever.png", "text": "Headache"},
-    {"image": "assets/images/cough.png", "text": "Cold"},
-    {"image": "assets/images/fever.png", "text": "Fatigue"},
-    {"image": "assets/images/cough.png", "text": "Body Pain"},
+  final List<Map<String, dynamic>> diseases = [
+    {"image": "assets/images/unnamed.jpg", "text": "Diabetes"},
+    {"image": "assets/images/stomach.avif", "text": "Hypertension"},
+    {"image": "assets/images/unnamed.jpg", "text": "Migraine"},
+    {"image": "assets/images/stomach.avif", "text": "Asthma"},
+    {"image": "assets/images/unnamed.jpg", "text": "Arthritis"},
+    {"image": "assets/images/stomach.avif", "text": "Cancer"},
   ];
 
-  SymptomsScreen({
+  DiseasesScreen({
     super.key,
-    this.title = "Symptoms",
+    this.title = "Diseases",
     this.viewAllText = "View all",
-    this.viewAllIcon,
-    this.bgColor = Colors.white, // Set a default color
+    this.viewAllIcon = Icons.arrow_forward_ios,
+    this.bgColor = Colors.white, // Default color if none provided
     this.showViewMore = true, // Default to true, can be changed per screen
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white, // Background color of the screen
       body: Padding(
-        padding: EdgeInsets.only(top: 16.0),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            /// **Title and View All Row**
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   title,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Row(
                   children: [
                     Text(
                       viewAllText,
-                      style: TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w500),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Icon(viewAllIcon, size: 16, color: Colors.grey),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 10),
 
-            // Scrollable row of symptoms
+            const SizedBox(height: 10),
+
+            /// **Scrollable Diseases List**
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  // Symptoms Boxes
-                  ...symptoms.map((symptom) {
-                    return _buildSymptomBox(
-                      symptom["image"]!,
-                      symptom["text"]!,
+                  /// **Disease Boxes**
+                  ...diseases.map((disease) {
+                    return _buildDiseasesBox(
+                      disease["image"]!,
+                      disease["text"]!,
                     );
                   }).toList(),
 
-                  // View More Box (Fixed)
+                  /// **View More Box (Only if showViewMore is true)**
                   if (showViewMore) _buildViewMoreBox(),
                 ],
               ),
@@ -79,29 +81,31 @@ class SymptomsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSymptomBox(String imagePath, String text) {
+  /// **Diseases Box Widget**
+  Widget _buildDiseasesBox(String imagePath, String text) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 7),
-      width: 105,
-      height: 100,
+      margin: const EdgeInsets.symmetric(horizontal: 7),
+      width: 110,
+      height: 105,
       decoration: BoxDecoration(
-        color: bgColor, // Now properly using Color type
+        color: bgColor, // Dynamic background color
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             blurRadius: 5,
             spreadRadius: 2,
-            offset: Offset(2, 3),
+            offset: const Offset(2, 3),
           ),
         ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          /// **Disease Image**
           Container(
-            width: 40,
-            height: 40,
+            width: 45,
+            height: 45,
             decoration: BoxDecoration(
               color: Colors.white, // Background for better image contrast
               borderRadius: BorderRadius.circular(22),
@@ -110,7 +114,7 @@ class SymptomsScreen extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.2),
                   blurRadius: 5,
                   spreadRadius: 2,
-                  offset: Offset(2, 3),
+                  offset: const Offset(2, 3),
                 ),
               ],
             ),
@@ -122,13 +126,15 @@ class SymptomsScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
+
+          /// **Disease Name**
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: Colors.teal, // Ensure text is visible on colored background
+              color: Colors.teal,
             ),
             textAlign: TextAlign.center,
           ),
@@ -137,13 +143,14 @@ class SymptomsScreen extends StatelessWidget {
     );
   }
 
+  /// **View More Box Widget**
   Widget _buildViewMoreBox() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 7),
       width: 110,
       height: 105,
       decoration: BoxDecoration(
-        color: Colors.teal.shade900, // Grey background for distinction
+        color: Colors.cyan.shade900, // Grey background for distinction
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(

@@ -8,9 +8,14 @@ void main() {
 }
 
 class DoctorsScreen extends StatelessWidget {
+  final String title;
+  final List<Color> bgColor;
+  final Color backgroundColor;
+  final Color fontColor;
+
   final List<Map<String, String>> doctors = [
     {
-      "name": "Dr. John Doe",
+      "name": "Dr. Nabila",
       "specialization": "Physician",
       "experience": "36 years of experience",
       "image": "assets/images/downloadDoc.png"
@@ -34,11 +39,18 @@ class DoctorsScreen extends StatelessWidget {
       "image": "assets/images/downloadDoc.png"
     },
   ];
+  DoctorsScreen({super.key,
+    this.title = "Doctors",
+    this.backgroundColor = const Color(0xFFB2DFDB),
+    this.fontColor= Colors.white,
+    List<Color>? bgColor})
+      : bgColor = bgColor ?? [Colors.teal.shade900, Colors.teal.shade300];
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal.shade100,
+      backgroundColor: backgroundColor,
       // appBar: AppBar(
       //   title: Text("Doctors"),
       //   backgroundColor: Colors.teal.shade700,
@@ -50,6 +62,10 @@ class DoctorsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 10),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             // Scrollable Doctor List
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -75,7 +91,6 @@ class DoctorsScreen extends StatelessWidget {
       ),
     );
   }
-
   Widget _buildDoctorBox(Map<String, String> doctor) {
     return Container(
       margin: EdgeInsets.only(top: 8, right: 10),
@@ -84,7 +99,7 @@ class DoctorsScreen extends StatelessWidget {
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.teal.shade900, Colors.teal.shade300],
+          colors:bgColor,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -98,43 +113,79 @@ class DoctorsScreen extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
+      child: Stack(
         children: [
-          // Doctor Image with Border Radius
-          ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Image.asset(
-              doctor["image"] ?? "",
-              width: 50,
-              height: 50,
-              fit: BoxFit.cover,
+          Row(
+            children: [
+              // Doctor Image
+              ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset(
+                  doctor["image"] ?? "",
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(width: 10), // Spacing between image and text
+
+              // Doctor Info
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      doctor["name"] ?? "Unknown",
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: fontColor),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      doctor["specialization"] ?? "Specialization not available",
+                      style: TextStyle(fontSize: 12, color: fontColor),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      doctor["experience"] ?? "Experience not available",
+                      style: TextStyle(fontSize: 12, color: fontColor),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+          // Star Icon at Bottom Left
+          Positioned(
+            bottom: -3,
+            left: 8,
+            child: Row(
+              children: [
+                Icon(Icons.star, color: Colors.yellow, size: 18),
+                SizedBox(width: 5),
+                Text(
+                  "4.8", // Static rating (can be dynamic)
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: fontColor),
+                ),
+              ],
             ),
           ),
-          SizedBox(width: 10), // Spacing between image and text
-
-          // Doctor Info
-          Expanded(
+          // Additional Text at Bottom Right
+          Positioned(
+            bottom: -3,
+            right: 8,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  doctor["name"] ?? "Unknown",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  "1000+ Patients", // Dynamic count of patients
+                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: fontColor),
                 ),
-                SizedBox(height: 4),
                 Text(
-                  doctor["specialization"] ?? "Specialization not available",
-                  style: TextStyle(fontSize: 12, color: Colors.white),
+                  "RS.2000", // Availability status
+                  style: TextStyle(fontSize: 12, color:fontColor, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 4),
-                Text(
-                  doctor["experience"] ?? "Experience not available",
-                  style: TextStyle(fontSize: 12, color: Colors.white),
-                ),
-                SizedBox(height: 4),
               ],
             ),
           ),
@@ -142,6 +193,7 @@ class DoctorsScreen extends StatelessWidget {
       ),
     );
   }
+
 }
 
 // Doctor Detail Screen
@@ -164,11 +216,11 @@ class DoctorDetailScreen extends StatelessWidget {
           children: [
             // Doctor Image
             ClipRRect(
-              borderRadius: BorderRadius.circular(75),
+              borderRadius: BorderRadius.circular(33),
               child: Image.asset(
                 doctor["image"] ?? "",
                 width: 150,
-                height: 150,
+                height: 180,
                 fit: BoxFit.cover,
               ),
             ),
@@ -216,22 +268,3 @@ class DoctorDetailScreen extends StatelessWidget {
     );
   }
 }
-
-// Dummy Appointment Screen
-// class AppointmentScreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Appointment Booking"),
-//         backgroundColor: Colors.teal.shade700,
-//       ),
-//       body: Center(
-//         child: Text(
-//           "Appointment Booking Page",
-//           style: TextStyle(fontSize: 18),
-//         ),
-//       ),
-//     );
-//   }
-// }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marham/Screens/HomeScreen/deseases.dart';
+import 'package:marham/Screens/HomeScreen/diseases.dart';
 import 'package:marham/Screens/HomeScreen/doctor.dart';
 import 'package:marham/Screens/HomeScreen/doctors_scroll.dart';
 import 'package:marham/Screens/HomeScreen/followus_screen.dart';
@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Navigator.pop(context); // Close the drawer
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SideMenu()), // Navigate to Appointments screen
+              MaterialPageRoute(builder: (context) => SideMenu()),
             );
           },
         ),
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView( // ✅ Make page scrollable
         child: Container(
           width: double.infinity,
-          height: 2286, // ✅ Ensure content fits
+          height: 2334, // ✅ Ensure content fits
           color: Colors.white,
           child: Padding(
             padding: EdgeInsets.only(top: 20, left: 20, right: 20),
@@ -198,14 +198,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 10),
                 SizedBox(
-                  height: 150,
+                  height: 170,
                   width: double.infinity,
-                  child: SymptomsScreen(),
+                  child: SymptomsScreen(viewAllIcon: Icons.double_arrow,
+                     showViewMore: false,
+                  ),
                 ),
                 SizedBox(
-                  height: 150,
+                  height: 170,
                   width: double.infinity,
-                  child: DeseasesScreen(),
+                  child: DiseasesScreen(viewAllIcon: Icons.double_arrow,
+                      showViewMore: false,),
                 ),
                 SizedBox(
                   height: 190,
@@ -217,8 +220,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 190,
                   width: double.infinity,
-                  child: DoctorsScreen(),
+                  child: DoctorsScreen(), // ✅ Correct
                 ),
+
                 SizedBox(height: 14,),
                 SizedBox(
                   height: 180,

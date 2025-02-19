@@ -40,7 +40,7 @@ class _FooterScreenState extends State<FooterScreen> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 70, // Adjusted height for the footer
+       // height: 70, // Adjusted height for the footer
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
