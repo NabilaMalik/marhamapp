@@ -12,8 +12,8 @@ class FindDoctorPage extends StatefulWidget {
 }
 
 class _FindDoctorPageState extends State<FindDoctorPage> {
-  String selectedCity = 'Karachi'; // Default city
-  final List<String> cities = ['Karachi', 'Lahore', 'Islamabad', 'Rawalpindi']; // List of cities
+  String selectedCity = 'Karachi';
+  final List<String> cities = ['Karachi', 'Lahore', 'Islamabad', 'Rawalpindi'];
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,11 @@ class _FindDoctorPageState extends State<FindDoctorPage> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: SingleChildScrollView( // Makes the page scrollable
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 4.0,right: 4),
           child: Column(
             children: [
-              // Teal box section
               Container(
                 height: 140,
                 width: double.infinity,
@@ -89,10 +88,8 @@ class _FindDoctorPageState extends State<FindDoctorPage> {
 
               const SizedBox(height: 10),
 
-              // Location box and search bar section
               Row(
                 children: [
-                  // Dropdown Box with Location Icon
                   Container(
                     height: 40,
                     width: 125,

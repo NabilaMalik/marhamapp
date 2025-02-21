@@ -9,30 +9,26 @@ class AppointmentViewModel extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchAllAppointments(); // ✅ Fixed function call
+    fetchAllAppointments();
   }
 
-  // Fetch all appointments from the database
   fetchAllAppointments() async {
-    var appointments = await appointmentRepository.getAppointments(); // ✅ Fixed method name
+    var appointments = await appointmentRepository.getAppointments();
     allAppointments.value = appointments;
   }
 
-  // Add a new appointment
   Future<void> addAppointment(AppointmentModel appointmentModel) async {
-    await appointmentRepository.addAppointment(appointmentModel); // ✅ Added await
+    await appointmentRepository.addAppointment(appointmentModel);
     fetchAllAppointments();
   }
 
-  // Update an appointment
   Future<void> updateAppointment(AppointmentModel appointmentModel) async {
-    await appointmentRepository.updateAppointment(appointmentModel); // ✅ Added await
+    await appointmentRepository.updateAppointment(appointmentModel);
     fetchAllAppointments();
   }
 
-  // Delete an appointment
   Future<void> deleteAppointment(int id) async {
-    await appointmentRepository.deleteAppointment(id); // ✅ Added await
+    await appointmentRepository.deleteAppointment(id);
     fetchAllAppointments();
   }
 }

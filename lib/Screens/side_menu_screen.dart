@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marham/Screens/HomeScreen/home_screen.dart';
 
@@ -10,8 +9,8 @@ class SideMenu extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: FractionallySizedBox(
-        widthFactor: 0.64, // Makes the menu take up 64% of the screen width
-        heightFactor: 1.0, // Full height
+        widthFactor: 0.64,
+        heightFactor: 1.0,
         child: Drawer(
           child: SingleChildScrollView(
             child: Column(
@@ -95,14 +94,12 @@ class SideMenu extends StatelessWidget {
                   title: const Text('Search Doctor'),
                   onTap: () {
                     Navigator.pop(context);
-                    // Navigate to Medical Records screen
                   },
                 ), ListTile(
                   leading: const Icon(Icons.wallet),
                   title: const Text('Wallet'),
                   onTap: () {
                     Navigator.pop(context);
-                    // Navigate to Medical Records screen
                   },
                 ),
                 ListTile(
@@ -110,28 +107,24 @@ class SideMenu extends StatelessWidget {
                   title: const Text('View Hospitals'),
                   onTap: () {
                     Navigator.pop(context);
-                    // Navigate to Medical Records screen
                   },
                 ),ListTile(
                   leading: const Icon(Icons.message_outlined),
                   title: const Text('Health Form'),
                   onTap: () {
                     Navigator.pop(context);
-                    // Navigate to Medical Records screen
                   },
                 ),ListTile(
                   leading: const Icon(Icons.health_and_safety_outlined),
                   title: const Text('View Hospitals'),
                   onTap: () {
                     Navigator.pop(context);
-                    // Navigate to Medical Records screen
                   },
                 ),ListTile(
                   leading: const Icon(Icons.person_add_outlined),
                   title: const Text('Are You Doctor?'),
                   onTap: () {
                     Navigator.pop(context);
-                    // Navigate to Medical Records screen
                   },
                 ),
                 ListTile(
@@ -139,7 +132,6 @@ class SideMenu extends StatelessWidget {
                   title: const Text('Log In'),
                   onTap: () {
                     Navigator.pop(context);
-                    // Navigate to Helpline screen
                   },
                 ),
                 const Divider(),
@@ -148,7 +140,6 @@ class SideMenu extends StatelessWidget {
                   title: const Text('Tell a Friend'),
                   onTap: () {
                     Navigator.pop(context);
-                    // Navigate to Settings screen
                   },
                 ),
                 ListTile(
@@ -156,7 +147,6 @@ class SideMenu extends StatelessWidget {
                   title: const Text('Contact us'),
                   onTap: () {
                     Navigator.pop(context);
-                    // Perform logout action
                   },
                 ),
               ],

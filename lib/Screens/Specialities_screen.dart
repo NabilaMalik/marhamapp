@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:marham/Screens/HomeScreen/choose_speciality_screen.dart';
 
 class SpecialitiesScreen extends StatelessWidget {
   final String title;
   final String viewAllText;
   final IconData? viewAllIcon;
   final Color bgColor;
-  final bool showViewMore; // Flag to control "View More" visibility
+  final bool showViewMore;
 
   final List<Map<String, dynamic>> topDiseases = [
     {"image": "assets/images/download.jpeg", "text": "Diabetes"},
@@ -24,20 +25,19 @@ class SpecialitiesScreen extends StatelessWidget {
     this.title = " ",
     this.viewAllText = "View all",
     this.viewAllIcon = Icons.arrow_forward_ios,
-    this.bgColor = Colors.white, // Default color if none provided
-    this.showViewMore = true, // Default to true, can be changed per screen
+    this.bgColor = Colors.white,
+    this.showViewMore = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Background color of the screen
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// **Title and View All Row**
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -60,21 +60,17 @@ class SpecialitiesScreen extends StatelessWidget {
 
             const SizedBox(height: 10),
 
-            /// **Scrollable Diseases List**
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  /// **Disease Boxes**
                   ...topDiseases.map((disease) {
                     return _buildDiseasesBox(
                       disease["image"]!,
                       disease["text"]!,
                     );
                   }).toList(),
-
-                  /// **View More Box (Only if showViewMore is true)**
-                  if (showViewMore) _buildViewMoreBox(),
+                  if (showViewMore) _buildViewMoreBox(context),
                 ],
               ),
             ),
@@ -83,15 +79,13 @@ class SpecialitiesScreen extends StatelessWidget {
       ),
     );
   }
-
-  /// **Diseases Box Widget**
   Widget _buildDiseasesBox(String imagePath, String text) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 7),
       width: 110,
       height: 105,
       decoration: BoxDecoration(
-        color: bgColor, // Dynamic background color
+        color: bgColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -105,12 +99,11 @@ class SpecialitiesScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          /// **Disease Image**
           Container(
             width: 45,
             height: 45,
             decoration: BoxDecoration(
-              color: Colors.white, // Background for better image contrast
+              color: Colors.white,
               borderRadius: BorderRadius.circular(22),
               boxShadow: [
                 BoxShadow(
@@ -131,7 +124,6 @@ class SpecialitiesScreen extends StatelessWidget {
           ),
           const SizedBox(height: 5),
 
-          /// **Disease Name**
           Text(
             text,
             style: const TextStyle(
@@ -146,38 +138,46 @@ class SpecialitiesScreen extends StatelessWidget {
     );
   }
 
-  /// **View More Box Widget**
-  Widget _buildViewMoreBox() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 7),
-      width: 110,
-      height: 105,
-      decoration: BoxDecoration(
-        color: Colors.cyan.shade900, // Grey background for distinction
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 5,
-            spreadRadius: 2,
-            offset: const Offset(2, 3),
-          ),
-        ],
-      ),
-      child: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.double_arrow, size: 20, color: Colors.white),
-            Text(
-              "View More",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
+  Widget _buildViewMoreBox(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ChooseSpecialityScreen()),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 7),
+        width: 110,
+        height: 105,
+        decoration: BoxDecoration(
+          color: Colors.teal.shade900, // Background color
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 5,
+              spreadRadius: 2,
+              offset: const Offset(2, 3),
             ),
           ],
+        ),
+        child: const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.double_arrow, size: 20, color: Colors.white),
+              SizedBox(height: 5),
+              Text(
+                "View More",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

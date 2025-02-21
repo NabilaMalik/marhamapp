@@ -26,23 +26,22 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Get screen dimensions
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.teal, // Blue background
+      backgroundColor: Colors.teal,
       body: Center(
         child: Column(
           children: [
             Align(
               alignment: Alignment.center,
               child: Padding(
-                padding: EdgeInsets.only(top: screenHeight * 0.4), // 40% from the top
+                padding: EdgeInsets.only(top: screenHeight * 0.4),
                 child: SizedBox(
-                  width: screenWidth * 0.8, // Ensure text doesn't overflow
+                  width: screenWidth * 0.8,
                   child: const FittedBox(
-                    fit: BoxFit.scaleDown, // Prevents text overflow
+                    fit: BoxFit.scaleDown,
                     child: Text(
                       "Medical App",
                       style: TextStyle(
@@ -59,9 +58,9 @@ class _SplashScreenState extends State<SplashScreen> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: EdgeInsets.only(top: screenHeight * 0.4), // Responsive padding
+                padding: EdgeInsets.only(top: screenHeight * 0.4),
                 child: SizedBox(
-                  width: screenWidth * 0.9, // Ensure it fits the screen
+                  width: screenWidth * 0.9,
                   child: const FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(

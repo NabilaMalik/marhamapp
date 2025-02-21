@@ -27,7 +27,6 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     "Dr. Olivia Johnson - Neurologist"
   ];
 
-  // Function to pick a date
   Future<void> _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       context: context,
@@ -42,22 +41,19 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     }
   }
 
-  // Function to book the appointment
   void _bookAppointment() {
     if (selectedDate != null && selectedTime != null && selectedDoctor != null) {
       AppointmentModel appointmentModel = AppointmentModel(
         doctor: selectedDoctor!,
-        date: selectedDate!.toLocal().toString().split(' ')[0],  // format to yyyy-mm-dd
+        date: selectedDate!.toLocal().toString().split(' ')[0],
         time: selectedTime!,
       );
-
-      appointmentViewModel.addAppointment(appointmentModel);  // Add the appointment to DB
+      appointmentViewModel.addAppointment(appointmentModel);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Appointment Booked Successfully!")),
       );
-      Navigator.pop(context); // Close the screen after booking
+      Navigator.pop(context);
     } else {
-      // Show an error message if not all fields are filled
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Please fill in all fields")),
       );
@@ -76,7 +72,6 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Date Picker
             Text("Select Date", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             SizedBox(height: 8),
             GestureDetector(
@@ -115,7 +110,6 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
             ),
             SizedBox(height: 16),
 
-            // Doctor Selection Dropdown
             Text("Select Doctor", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             SizedBox(height: 8),
             DropdownButtonFormField<String>(
@@ -139,12 +133,11 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
             ),
             SizedBox(height: 20),
 
-            // Book Appointment Button
             Center(
               child: ElevatedButton(
                 onPressed: selectedDate != null && selectedTime != null && selectedDoctor != null
                     ? _bookAppointment
-                    : null, // Disabled if not filled
+                    : null,
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                   textStyle: TextStyle(fontSize: 18),

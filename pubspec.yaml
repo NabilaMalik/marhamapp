@@ -92,6 +92,12 @@ flutter:
      - assets/images/download.jpeg
      - assets/images/hypertension.jpeg
      - assets/images/migraine.jpeg
+     - assets/images/images.jpeg
+     - assets/images/imagess.jpg
+     - assets/images/smiling-korean.jpg
+     - assets/images/background.avif
+     - assets/images/wallpaper.jpg
+     - assets/images/downloadDocC.png
 
   #   - images/a_dot_ham.jpeg
 
