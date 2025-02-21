@@ -698,7 +698,6 @@ class SpecialityDetailScreen extends StatelessWidget {
   }
 }
 
-// 🎯 Reusable Doctor Card Widget
 class DoctorCard extends StatelessWidget {
   final String imagePath;
   final String doctorName;
