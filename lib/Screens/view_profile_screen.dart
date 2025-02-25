@@ -120,7 +120,6 @@ class ProfileScreen extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            // Book Appointment Button
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.redAccent.shade700,

@@ -7,111 +7,122 @@ class HealthBlogsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        //  mainAxisAlignment: MainAxisAlignment.,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align left & right
-            children: [
-              Text(
-                "Health Blogs",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Row(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 6.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align left & right
+              children: [
+                Text(
+                  "Health Blogs",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "View all",
+                      style: TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(width: 5), // Space between text and icon
+                    Icon(Icons.double_arrow, size: 16, color: Colors.grey), // Small next icon
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+
+            // Horizontal Scrollable Boxes
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal, // Enables horizontal scrolling
+              child: Row(
                 children: [
-                  Text(
-                    "View all",
-                    style: TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(width: 5), // Space between text and icon
-                  Icon(Icons.double_arrow, size: 16, color: Colors.grey), // Small next icon
+                  _buildBox(context, "assets/images/healthylifestyle.jpg", "Healthy Lifestyle"),
+                  _buildBox(context, "assets/images/womanhealth.jpg", "Women's Health"),
+                  _buildBox(context, "assets/images/Skin-Care.jpg", "Skin Care"),
+                  _buildBox(context, "assets/images/download (2).jpg", "Fitness & Exercise"),
+                  _buildBox(context, "assets/images/Skin-Care.jpg", "Health News"),
+                  _buildBox(context, "assets/images/download.jpg", "Dental Health"),
                 ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// **Blog Box Widget with Snackbar**
+  Widget _buildBox(BuildContext context, String imagePath, String text) {
+    return GestureDetector(
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("You clicked on $text"),
+            duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.teal,
+          ),
+        );
+      },
+      child: Padding(
+        padding: EdgeInsets.only(left: 3.0, right: 3, bottom: 24),
+        child: Container(
+          height: 117,
+          width: 115,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 5,
+                spreadRadius: 2,
+                offset: Offset(2, 3),
               ),
             ],
           ),
-          SizedBox(height: 10),
-          // Horizontal Scrollable Boxes
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal, // Enables horizontal scrolling
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildBox("assets/images/healthylifestyle.jpg", "healthy lifestyle"),
-                _buildBox("assets/images/womanhealth.jpg", "Women's Health"),
-                _buildBox("assets/images/Skin-Care.jpg", "Skin Care"),
-                _buildBox("assets/images/download (2).jpg", "Fitness & Exercise "),
-                _buildBox("assets/images/Skin-Care.jpg", "Health News"),
-                _buildBox("assets/images/download.jpg", "Dental Health"),
-              ],
-            ),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(0),
+                child: Image.asset(
+                  imagePath,
+                  height: 90,
+                  width: 105,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Text(
+                text,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.teal,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
-
-          SizedBox(height: 0), // Space between horizontal and vertical boxes
-
-          // Vertical Boxes
-          // Column(
-          //   //mainAxisAlignment: MainAxisAlignment.start,
-          //   children: [
-          //     _buildBoxCustomSize(
-          //       "assets/images/doc.png",
-          //       "Get free medical advice by asking a doctor",
-          //       ["Ask a question anonymously", "Get a reply  from PMC verified doctors",], // List of text items
-          //     ),
-          //   ],
-          // ),
-
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBox(String imagePath, String text) {
-    return Padding(
-      padding: EdgeInsets.only(left: 3.0,right:3,bottom: 24),
-      child: Container(
-        height: 117, // Box height
-        width: 115, // Box width
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 5,
-              spreadRadius: 2,
-              offset: Offset(2, 3),
-            ),
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start, // Center content
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(0),
-              child: Image.asset(
-                imagePath,
-                height: 90, // Image height
-                width: 105, // Image width
-
-              ),
-            ),
-            //   SizedBox(height: 5), // Space between image and text
-            Text(
-              text,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-                color: Colors.teal,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-
         ),
       ),
     );
   }
-  // Widget _buildBoxCustomSize(String imagePath, String title, List<String> points) {
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Widget _buildBoxCustomSize(String imagePath, String title, List<String> points) {
   //   return Padding(
   //     padding: EdgeInsets.only(top: 0.0),
   //     child: Container(
@@ -231,4 +242,4 @@ class HealthBlogsScreen extends StatelessWidget {
   // }
 
 
-}
+

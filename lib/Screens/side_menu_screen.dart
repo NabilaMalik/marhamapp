@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marham/Screens/HomeScreen/home_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/home_screen.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({super.key});

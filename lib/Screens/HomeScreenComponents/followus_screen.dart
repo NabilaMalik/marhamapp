@@ -61,12 +61,12 @@ class FollowusScreen extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 26), // Space between boxes
-          width: 40, // Custom width for each box
-          height: 40, // Custom height for each box
+          margin: EdgeInsets.symmetric(horizontal: 26),
+          width: 40,
+          height: 40,
           decoration: BoxDecoration(
-            color: Colors.white, // Background color of the box
-            borderRadius: BorderRadius.circular(31), // Rounded corners for the box
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(31),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.2),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:marham/Screens/HomeScreen/diseases_screen.dart';
-import 'package:marham/Screens/HomeScreen/doctor_screen.dart';
-import 'package:marham/Screens/HomeScreen/doctors_scroll.dart';
-import 'package:marham/Screens/HomeScreen/followus_screen.dart';
-import 'package:marham/Screens/HomeScreen/footer_screen.dart';
-import 'package:marham/Screens/HomeScreen/health_blogs_screen.dart';
-import 'package:marham/Screens/HomeScreen/horizontal_boxes_screen.dart';
-import 'package:marham/Screens/HomeScreen/hospitals_screen.dart';
-import 'package:marham/Screens/HomeScreen/symptoms.dart';
-import 'package:marham/Screens/HomeScreen/video_text_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/diseases_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/doctor_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/doctors_scroll.dart';
+import 'package:marham/Screens/HomeScreenComponents/followus_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/footer_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/health_blogs_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/horizontal_boxes_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/hospitals_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/symptoms.dart';
+import 'package:marham/Screens/HomeScreenComponents/video_text_screen.dart';
 import 'package:marham/Screens/side_menu_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      body: SingleChildScrollView( // ✅ Make page scrollable
+      body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
           height: 2334, // ✅ Ensure content fits
@@ -144,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: "     Search by Doctor",
+                        hintText: "Search by Doctor",
                         suffixIcon: Icon(Icons.search, color: Colors.grey),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(6),
@@ -192,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 // Horizontal and Vertical Boxes
                 SizedBox(
-                  height: 270,
+                  height: 280,
                   width: double.infinity,
                   child: HorizontalVerticalBoxesScreen(),
                 ),
@@ -237,7 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: VideoTextScreen(),
                 ),
                 SizedBox(
-                  height: 150,
+                  height: 140,
                   width: double.infinity,
                   child: FollowusScreen(),
                 ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marham/Screens/HomeScreen/choose_speciality_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/choose_speciality_screen.dart';
 import 'package:marham/Screens/spaciality_detail_screen.dart';
 
 class SymptomsScreen extends StatelessWidget {
@@ -23,8 +23,8 @@ class SymptomsScreen extends StatelessWidget {
     this.title = "Symptoms",
     this.viewAllText = "View all",
     this.viewAllIcon,
-    this.bgColor = Colors.white, // Set a default color
-    this.showViewMore = true, // Default to true, can be changed per screen
+    this.bgColor = Colors.white,
+    this.showViewMore = true,
   });
 
   @override
@@ -78,14 +78,12 @@ class SymptomsScreen extends StatelessWidget {
                         symptom["text"]!,
                       ),
                     );
-                  }).toList(),
-
+                  }),
                   // View More Box (Fixed)
                   if (showViewMore) _buildViewMoreBox(context),
                 ],
               ),
             ),
-
           ],
         ),
       ),
@@ -141,7 +139,7 @@ class SymptomsScreen extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: Colors.teal, // Ensure text is visible on colored background
+              color: Colors.teal,
             ),
             textAlign: TextAlign.center,
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:marham/Screens/spaciality_detail_screen.dart';
-
 class ChooseSpecialityScreen extends StatefulWidget {
   @override
   _ChooseSpecialityScreenState createState() => _ChooseSpecialityScreenState();

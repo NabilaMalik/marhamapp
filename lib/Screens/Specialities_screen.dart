@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marham/Screens/HomeScreen/choose_speciality_screen.dart';
+import 'package:marham/Screens/HomeScreenComponents/choose_speciality_screen.dart';
 import 'package:marham/Screens/spaciality_detail_screen.dart';
 
 class SpecialitiesScreen extends StatelessWidget {
