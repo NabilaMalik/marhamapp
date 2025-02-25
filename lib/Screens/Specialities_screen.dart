@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marham/Screens/HomeScreen/choose_speciality_screen.dart';
+import 'package:marham/Screens/spaciality_detail_screen.dart';
 
 class SpecialitiesScreen extends StatelessWidget {
   final String title;
@@ -57,19 +58,25 @@ class SpecialitiesScreen extends StatelessWidget {
                 ),
               ],
             ),
-
             const SizedBox(height: 10),
-
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
                   ...topDiseases.map((disease) {
                     return _buildDiseasesBox(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SpecialityDetailScreen(specialityName: '',), // Navigate to new page
+                          ),
+                        );
+                      },
                       disease["image"]!,
                       disease["text"]!,
                     );
-                  }).toList(),
+                  }),
                   if (showViewMore) _buildViewMoreBox(context),
                 ],
               ),
@@ -79,64 +86,70 @@ class SpecialitiesScreen extends StatelessWidget {
       ),
     );
   }
-  Widget _buildDiseasesBox(String imagePath, String text) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 7),
-      width: 110,
-      height: 105,
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 5,
-            spreadRadius: 2,
-            offset: const Offset(2, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 45,
-            height: 45,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(22),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  blurRadius: 5,
-                  spreadRadius: 2,
-                  offset: const Offset(2, 3),
-                ),
-              ],
+  Widget _buildDiseasesBox(String imagePath, String text, {VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 7),
+        width: 110,
+        height: 105,
+        decoration: BoxDecoration(
+          color: Colors.white, // Default background color
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 5,
+              spreadRadius: 2,
+              offset: const Offset(2, 3),
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(21),
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            /// **Disease Image**
+            Container(
+              width: 45,
+              height: 45,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(22),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    blurRadius: 5,
+                    spreadRadius: 2,
+                    offset: const Offset(2, 3),
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(21),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 5),
+            const SizedBox(height: 8),
 
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.teal,
+            /// **Disease Name**
+            Text(
+              text,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.teal,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
+
 
   Widget _buildViewMoreBox(BuildContext context) {
     return GestureDetector(

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:marham/Screens/benefits_cunsulting_doctors_screen.dart';
 import 'package:marham/Screens/instant_doctors_screen.dart';
+import 'package:marham/Screens/video_consulatation_screen.dart';
+import 'package:marham/Screens/view_profile_screen.dart';
 
 class SpecialityDetailScreen extends StatelessWidget {
   final String specialityName;
@@ -30,7 +33,6 @@ class SpecialityDetailScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // 🔍 Search Bar
                 Container(
                   height: 45,
                   width: double.infinity,
@@ -223,18 +225,26 @@ class SpecialityDetailScreen extends StatelessWidget {
                               // 🔴 Video Consultation Button with Icon
                               ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red, // Red background
-                                  foregroundColor: Colors.white, // White text
+                                  backgroundColor: Colors.red,
+                                  foregroundColor: Colors.white,
                                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
                                 onPressed: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    isDismissible: true,
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    builder: (context) => const VideoConsultationBottomSheet(),
+                                  );
+
 
                                 },
-                                icon: const Icon(Icons.videocam_outlined, size: 18, color: Colors.white),
-                                label: const Text(
+                                icon: Icon(Icons.videocam_outlined, size: 18, color: Colors.white), // 🎥 Video Call Icon
+                                label:Text(
                                   "Video Consultation",
                                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                                 ),
@@ -245,13 +255,16 @@ class SpecialityDetailScreen extends StatelessWidget {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blue.shade900,
                                   foregroundColor: Colors.white, // White text
-                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                  padding: const EdgeInsets.symmetric(horizontal: 44, vertical: 10),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
                                 onPressed: () {
-
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => ProfileScreen(specialityName: '',)),
+                                  );
                                 },
                                 icon: const Icon(Icons.person_outline, size: 18, color: Colors.white),
                                 label: const Text(
@@ -431,18 +444,26 @@ class SpecialityDetailScreen extends StatelessWidget {
                             children: [
                               ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red, // Red background
-                                  foregroundColor: Colors.white, // White text
+                                  backgroundColor: Colors.red,
+                                  foregroundColor: Colors.white,
                                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
                                 onPressed: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    isDismissible: true,
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    builder: (context) => const VideoConsultationBottomSheet(),
+                                  );
+
 
                                 },
-                                icon: const Icon(Icons.videocam_outlined, size: 18, color: Colors.white),
-                                label: const Text(
+                                icon: Icon(Icons.videocam_outlined, size: 18, color: Colors.white), // 🎥 Video Call Icon
+                                label:Text(
                                   "Video Consultation",
                                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                                 ),
@@ -451,13 +472,16 @@ class SpecialityDetailScreen extends StatelessWidget {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blue.shade900,
                                   foregroundColor: Colors.white,
-                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                  padding: const EdgeInsets.symmetric(horizontal: 44, vertical: 10),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
                                 onPressed: () {
-
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => ProfileScreen(specialityName: '',)),
+                                  );
                                 },
                                 icon: const Icon(Icons.person_outline, size: 18, color: Colors.white),
                                 label: const Text(
@@ -615,9 +639,9 @@ class SpecialityDetailScreen extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 4),
-                                      const Text("Available Now", style: TextStyle(fontSize: 12, color: Colors.green, fontWeight: FontWeight.bold)),
-                                      const SizedBox(height: 2),
+                                       SizedBox(height: 4),
+                                      Text("Available Now", style: TextStyle(fontSize: 12, color: Colors.green, fontWeight: FontWeight.bold)),
+                                      SizedBox(height: 2),
                                       Align(
                                         alignment: Alignment.bottomRight,
                                         child: Text(
@@ -631,7 +655,7 @@ class SpecialityDetailScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 19),
+                           SizedBox(height: 19),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -644,11 +668,19 @@ class SpecialityDetailScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
-                                onPressed: () {
+                                  onPressed: () {
+    showModalBottomSheet(
+    context: context,
+    isDismissible: true,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) => const VideoConsultationBottomSheet(),
+    );
+
 
                                 },
-                                icon: const Icon(Icons.videocam_outlined, size: 18, color: Colors.white), // 🎥 Video Call Icon
-                                label: const Text(
+                                icon: Icon(Icons.videocam_outlined, size: 18, color: Colors.white), // 🎥 Video Call Icon
+                                label:Text(
                                   "Video Consultation",
                                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                                 ),
@@ -657,38 +689,49 @@ class SpecialityDetailScreen extends StatelessWidget {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blue.shade900,
                                   foregroundColor: Colors.white,
-                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                  padding: const EdgeInsets.symmetric(horizontal: 44, vertical: 10),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
                                 onPressed: () {
-
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => ProfileScreen(
+                                      specialityName: '',
+                                    )),
+                                  );
                                 },
-                                icon: const Icon(Icons.person_outline, size: 18, color: Colors.white),
-                                label: const Text(
+                                icon: Icon(Icons.person_outline, size: 18, color: Colors.white),
+                                label: Text(
                                   "View Profile",
                                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ],
-
                           ),
-
                         ],
-
                       ),
-
                     ],
-
                   ),
-
                 ),
-                SizedBox(height: 220,
+                SizedBox(
+                  height: 220,
                   width: double.infinity,
                   child: InstantDoctorsScreen(),
                 ),
-                SizedBox(),
+                SizedBox(height: 10,),
+                SizedBox(
+                  height: 230,
+                  width: double.infinity,
+                  child: BenefitsConsultingDoctorsScreen(),
+                ),
+                SizedBox(height: 10,),
+                SizedBox(
+                  height: 160,
+                  width: double.infinity,
+                  child: MyColumnScreen(),
+                ),
               ],
             ),
           ),

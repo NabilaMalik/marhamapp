@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marham/Screens/HomeScreen/choose_speciality_screen.dart';
+import 'package:marham/Screens/spaciality_detail_screen.dart';
 
 class SymptomsScreen extends StatelessWidget {
   final String title;
@@ -61,11 +62,21 @@ class SymptomsScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  // Symptoms Boxes
+                  // Symptoms Boxes with Navigation
                   ...symptoms.map((symptom) {
-                    return _buildSymptomBox(
-                      symptom["image"]!,
-                      symptom["text"]!,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SpecialityDetailScreen(specialityName: '',), // Navigate to new page
+                          ),
+                        );
+                      },
+                      child: _buildSymptomBox(
+                        symptom["image"]!,
+                        symptom["text"]!,
+                      ),
                     );
                   }).toList(),
 
@@ -74,6 +85,7 @@ class SymptomsScreen extends StatelessWidget {
                 ],
               ),
             ),
+
           ],
         ),
       ),

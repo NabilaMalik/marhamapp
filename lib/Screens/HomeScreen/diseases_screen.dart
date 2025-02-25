@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marham/Screens/spaciality_detail_screen.dart';
 
 class DiseasesScreen extends StatelessWidget {
   final String title;
@@ -24,7 +25,6 @@ class DiseasesScreen extends StatelessWidget {
     this.bgColor = Colors.white, // Default color if none provided
     this.showViewMore = true, // Default to true, can be changed per screen
   });
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,11 +62,21 @@ class DiseasesScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  /// **Disease Boxes**
+                  /// **Disease Boxes with Navigation**
                   ...diseases.map((disease) {
                     return _buildDiseasesBox(
-                      disease["image"]!,
-                      disease["text"]!,
+                       disease["image"]!,
+                       disease["text"]!,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SpecialityDetailScreen(
+                              specialityName: disease["text"]!,
+                            ), // Navigate to new page
+                          ),
+                        );
+                      },
                     );
                   }).toList(),
 
@@ -81,67 +91,100 @@ class DiseasesScreen extends StatelessWidget {
     );
   }
 
-  /// **Diseases Box Widget**
-  Widget _buildDiseasesBox(String imagePath, String text) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 7),
-      width: 110,
-      height: 105,
-      decoration: BoxDecoration(
-        color: bgColor, // Dynamic background color
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 5,
-            spreadRadius: 2,
-            offset: const Offset(2, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          /// **Disease Image**
-          Container(
-            width: 45,
-            height: 45,
-            decoration: BoxDecoration(
-              color: Colors.white, // Background for better image contrast
-              borderRadius: BorderRadius.circular(22),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  blurRadius: 5,
-                  spreadRadius: 2,
-                  offset: const Offset(2, 3),
-                ),
-              ],
+
+
+
+
+  //
+  // Widget _buildDiseasesBox(String image, String text, {required VoidCallback onTap}) {
+  //   return GestureDetector(
+  //     onTap: onTap, // Trigger navigation when tapped
+  //     child: Container(
+  //       margin: const EdgeInsets.only(right: 10),
+  //       padding: const EdgeInsets.all(12),
+  //       decoration: BoxDecoration(
+  //         color: Colors.white,
+  //         borderRadius: BorderRadius.circular(10),
+  //         boxShadow: [
+  //           BoxShadow(color: Colors.grey.shade300, blurRadius: 5, spreadRadius: 2),
+  //         ],
+  //       ),
+  //       child: Column(
+  //         children: [
+  //           Image.asset(image, width: 50, height: 50),
+  //           const SizedBox(height: 5),
+  //           Text(text, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
+
+
+  Widget _buildDiseasesBox(String imagePath, String text, {required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap, // Handles the tap event
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 7),
+        width: 110,
+        height: 105,
+        decoration: BoxDecoration(
+          color: bgColor, // Dynamic background color
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 5,
+              spreadRadius: 2,
+              offset: const Offset(2, 3),
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(21),
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            /// **Disease Image**
+            Container(
+              width: 45,
+              height: 45,
+              decoration: BoxDecoration(
+                color: Colors.white, // Background for better image contrast
+                borderRadius: BorderRadius.circular(22),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    blurRadius: 5,
+                    spreadRadius: 2,
+                    offset: const Offset(2, 3),
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(21),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 5),
+            const SizedBox(height: 5),
 
-          /// **Disease Name**
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.teal,
+            /// **Disease Name**
+            Text(
+              text,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Colors.teal,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
+
 
   /// **View More Box Widget**
   Widget _buildViewMoreBox() {

@@ -44,7 +44,7 @@ class InstantDoctorsScreen extends StatelessWidget {
           ),
 
           Container(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withOpacity(0.5),
           ),
 
           Column(

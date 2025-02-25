@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marham/Screens/appointment_screen.dart';
+import 'package:marham/Screens/spaciality_detail_screen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -77,7 +78,8 @@ class DoctorsScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DoctorDetailScreen(doctor: doctor),
+                        //  builder: (context) => DoctorDetailScreen(doctor: doctor),
+                          builder: (context) => SpecialityDetailScreen(specialityName: '',),
                         ),
                       );
                     },

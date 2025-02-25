@@ -98,6 +98,7 @@ flutter:
      - assets/images/background.avif
      - assets/images/wallpaper.jpg
      - assets/images/downloadDocC.png
+     - assets/images/Asset.png
 
   #   - images/a_dot_ham.jpeg
 

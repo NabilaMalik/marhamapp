@@ -3,7 +3,6 @@ import 'package:marham/Screens/HomeScreen/home_screen.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Align(
