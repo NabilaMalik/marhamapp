@@ -63,43 +63,50 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/capital-letter-m.jpg
-     - assets/images/user.png
-     - assets/images/download (1).png
-     - assets/images/downloadDoc.png
-     - assets/images/male-doctor-.webp
-     - assets/images/doc.png
-     - assets/images/images.png
-     - assets/images/family.png
-     - assets/images/images (1) .jpg
-     - assets/images/download.jpg
-     - assets/images/download (1).jpg
-     - assets/images/download (2).jpg
-     - assets/images/fever.png
-     - assets/images/cough.png
-     - assets/images/unnamed.jpg
-     - assets/images/stomach.avif
-     - assets/images/healthylifestyle.jpg
-     - assets/images/womanhealth.jpg
-     - assets/images/Skin-Care.jpg
-     - assets/video/WhatsApp Video .mp4
-     - assets/video/Screen_recording.mp4
-     - assets/images/fb.png
-     - assets/images/youtube.png
-     - assets/images/insta.jpg
-     - assets/images/TIKTOK.jpg
-     - assets/images/doctorafdad.png
-     - assets/images/download.jpeg
-     - assets/images/hypertension.jpeg
-     - assets/images/migraine.jpeg
-     - assets/images/images.jpeg
-     - assets/images/imagess.jpg
-     - assets/images/smiling-korean.jpg
-     - assets/images/background.avif
-     - assets/images/wallpaper.jpg
-     - assets/images/downloadDocC.png
-     - assets/images/Asset.png
-     - assets/images/alag.jpg
+#    - assets/
+    - assets/images/
+    - assets/video/
+
+
+#
+#     - assets/images/capital-letter-m.jpg
+#     - assets/images/user.png
+#     - assets/images/download (1).png
+#     - assets/images/downloadDoc.png
+#     - assets/images/male-doctor-.webp
+#     - assets/images/doc.png
+#     - assets/images/images.png
+#     - assets/images/family.png
+#     - assets/images/images (1) .jpg
+#     - assets/images/download.jpg
+#     - assets/images/download (1).jpg
+#     - assets/images/download (2).jpg
+#     - assets/images/fever.png
+#     - assets/images/cough.png
+#     - assets/images/unnamed.jpg
+#     - assets/images/stomach.avif
+#     - assets/images/healthylifestyle.jpg
+#     - assets/images/womanhealth.jpg
+#     - assets/images/Skin-Care.jpg
+#     - assets/video/WhatsApp Video .mp4
+#     - assets/video/Screen_recording.mp4
+#     - assets/images/fb.png
+#     - assets/images/youtube.png
+#     - assets/images/insta.jpg
+#     - assets/images/TIKTOK.jpg
+#     - assets/images/doctorafdad.png
+#     - assets/images/download.jpeg
+#     - assets/images/hypertension.jpeg
+#     - assets/images/migraine.jpeg
+#     - assets/images/images.jpeg
+#     - assets/images/imagess.jpg
+#     - assets/images/smiling-korean.jpg
+#     - assets/images/background.avif
+#     - assets/images/wallpaper.jpg
+#     - assets/images/downloadDocC.png
+#     - assets/images/Asset.png
+#     - assets/images/alag.jpg
+#     - assets/images/order delivery.webp
 
   #   - images/a_dot_ham.jpeg
 

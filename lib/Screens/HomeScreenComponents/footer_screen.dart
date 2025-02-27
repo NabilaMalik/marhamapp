@@ -7,7 +7,8 @@ class FooterScreen extends StatefulWidget {
   _FooterScreenState createState() => _FooterScreenState();
 }
 
-class _FooterScreenState extends State<FooterScreen> {
+class _FooterScreenState extends State<FooterScreen>
+{
   int _selectedIndex = 0;
 
   final List<IconData> _icons = [

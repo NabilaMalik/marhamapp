@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marham/Screens/labs_screen.dart';
+import 'package:marham/Screens/medicine_screen.dart';
 
 class HorizontalVerticalBoxesScreen extends StatelessWidget {
   const HorizontalVerticalBoxesScreen({super.key});
@@ -16,7 +17,7 @@ class HorizontalVerticalBoxesScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _buildBox(context, "assets/images/download.jpg", "Labs", LabsScreen(testName: '',)),
-                _buildBox(context, "assets/images/download.jpg", "Medicines", MedicinesScreen()),
+                _buildBox(context, "assets/images/download.jpg", "Medicines", MedicineScreen()),
                 _buildBox(context, "assets/images/download (1).jpg", "Hospitals", HospitalsScreen()),
                 _buildBox(context, "assets/images/download (2).jpg", "Blogs", BlogsScreen()),
               ],
@@ -216,17 +217,17 @@ class HorizontalVerticalBoxesScreen extends StatelessWidget {
 //     );
 //   }
 // }
-
-/// **Medicines Screen**
-class MedicinesScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Medicines"), backgroundColor: Colors.teal),
-      body: Center(child: Text("Medicines Information Here", style: TextStyle(fontSize: 18))),
-    );
-  }
-}
+//
+// /// **Medicines Screen**
+// class MedicinesScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text("Medicines"), backgroundColor: Colors.teal),
+//       body: Center(child: Text("Medicines Information Here", style: TextStyle(fontSize: 18))),
+//     );
+//   }
+// }
 
 /// **Hospitals Screen**
 class HospitalsScreen extends StatelessWidget {

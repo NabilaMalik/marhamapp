@@ -7,7 +7,6 @@ class LabsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Sample lab data
     List<Map<String, String>> labs = [
       {
         "name": "Excel Labs",
@@ -47,6 +46,7 @@ class LabsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // 🔍 Search Bar
             Container(
               height: 50,
               decoration: BoxDecoration(
@@ -80,6 +80,8 @@ class LabsScreen extends StatelessWidget {
             ),
 
             SizedBox(height: 15),
+
+            // 🏥 List of Labs
             Expanded(
               child: ListView.builder(
                 itemCount: labs.length,
@@ -272,7 +274,7 @@ class TopRightCornerPainter extends CustomPainter {
 
     path.moveTo(size.width, 0);
     path.lineTo(size.width - 70, 0);
-    path.lineTo(size.width, 0);
+    path.lineTo(size.width, 70);
     path.close();
 
     canvas.drawPath(path, paint);
