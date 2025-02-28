@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HospitalScreen extends StatelessWidget {
+  final String title;
+  final List<Color> bgColor;
+  final Color backgroundColor;
+  final Color fontColor;
   final List<Map<String, String>> hospitals = [
     {
 
@@ -34,21 +38,27 @@ class HospitalScreen extends StatelessWidget {
     },
   ];
 
+   HospitalScreen({super.key,
+    this.title = "Hospitals",
+    this.backgroundColor = const Color(0xFFB2DFDB),
+    this.fontColor= Colors.white,
+    List<Color>? bgColor})
+      : bgColor = bgColor ?? [Colors.teal.shade900, Colors.teal.shade300];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal.shade100, // Light background color
+      backgroundColor: backgroundColor,
       body: Padding(
-        padding: EdgeInsets.only(top: 16.0,left: 16),
+        padding: EdgeInsets.only(top: 16.0,left: 16,bottom: 22),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Hospitals",
+                  title,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Row(
@@ -87,7 +97,7 @@ class HospitalScreen extends StatelessWidget {
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.teal.shade900, Colors.teal.shade300], // Gradient colors
+          colors:bgColor,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -116,12 +126,12 @@ class HospitalScreen extends StatelessWidget {
                 SizedBox(height: 10),
                 Row(
                   children: [
-                    Icon(Icons.location_city_outlined, size: 22, color: Colors.white),
+                    Icon(Icons.location_city_outlined, size: 22, color: fontColor),
                     SizedBox(width: 5),
                     Expanded(
                       child: Text(
                         hospital["description"]!,
-                        style: TextStyle(fontSize: 12, color: Colors.white),
+                        style: TextStyle(fontSize: 12, color: fontColor),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -131,12 +141,12 @@ class HospitalScreen extends StatelessWidget {
                 SizedBox(height: 5),
                 Row(
                   children: [
-                    Icon(Icons.location_on, size: 22, color: Colors.white),
+                    Icon(Icons.location_on, size: 22, color: fontColor),
                     SizedBox(width: 5),
                     Expanded(
                       child: Text(
                         hospital["location"]!,
-                        style: TextStyle(fontSize: 12, color: Colors.white),
+                        style: TextStyle(fontSize: 12, color:fontColor),
                       ),
                     ),
                   ],
@@ -148,7 +158,7 @@ class HospitalScreen extends StatelessWidget {
           // Right Side - Arrow
           Padding(
             padding: EdgeInsets.only(left: 8),
-            child: Icon(Icons.arrow_forward_ios, size: 18, color: Colors.white),
+            child: Icon(Icons.arrow_forward_ios, size: 18, color: fontColor),
           ),
         ],
       ),

@@ -235,7 +235,8 @@ class _MedicineScreenState extends State<MedicineScreen> {
                 padding: const EdgeInsets.only(top: 10, left: 16,right:16 ),
                 child: SizedBox(
                   width: double.infinity, // Make the button full width
-                  child: ElevatedButton(
+                  child:
+                  ElevatedButton(
                     onPressed: () {
                       // Add confirm order action here
                     },

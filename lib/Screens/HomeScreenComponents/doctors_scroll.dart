@@ -202,7 +202,7 @@ class DoctorsScreen extends StatelessWidget {
 class DoctorDetailScreen extends StatelessWidget {
   final Map<String, String> doctor;
 
-  const DoctorDetailScreen({required this.doctor, Key? key}) : super(key: key);
+  const DoctorDetailScreen({required this.doctor, super.key});
 
   @override
   Widget build(BuildContext context) {
